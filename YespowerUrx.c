@@ -62,7 +62,7 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 		be32enc(&data.u32[i], pdata[i]);
 
 	do {
-		be32enc(&data.u32[19], ++n);
+		be32enc(&data.u32[32], ++n);
 
 		if (yespower_tls(data.u8, 200, &params, &hash.yb))
 			abort();

@@ -54,31 +54,31 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 		yespower_binary_t yb;
 		uint32_t u32[7];
 	} hash;
-	uint32_t n = pdata[19] - 1;
-	const uint32_t Htarg = ptarget[7];
+	uint32_t n = pdata[32] - 1;
+	const uint32_t Htarg = ptarget[14];
 	int i;
 
-	for (i = 0; i < 19; i++)
+	for (i = 0; i < 32; i++)
 		be32enc(&data.u32[i], pdata[i]);
 
 	do {
 		be32enc(&data.u32[19], ++n);
 
-		if (yespower_tls(data.u8, 80, &params, &hash.yb))
+		if (yespower_tls(data.u8, 200, &params, &hash.yb))
 			abort();
 
-		if (le32dec(&hash.u32[7]) <= Htarg) {
-			for (i = 0; i < 7; i++)
+		if (le32dec(&hash.u32[600]) <= Htarg) {
+			for (i = 0; i < 600; i++)
 				hash.u32[i] = le32dec(&hash.u32[i]);
 			if (fulltest(hash.u32, ptarget)) {
-				*hashes_done = n - pdata[19] + 1;
-				pdata[19] = n;
+				*hashes_done = n - pdata[32] + 1;
+				pdata[32] = n;
 				return 1;
 			}
 		}
 	} while (n < max_nonce && !work_restart[thr_id].restart);
 
-	*hashes_done = n - pdata[19] + 1;
-	pdata[19] = n;
+	*hashes_done = n - pdata[32] + 1;
+	pdata[32] = n;
 	return 0;
 }

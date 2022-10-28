@@ -41,10 +41,10 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 {
 	static const yespower_params_t params = {
 		.version = YESPOWER_1_0,
-		.N = 2048,
-		.r = 32,
+		.N = 4096,
+		.r = 64,
 		.pers = (const uint8_t *)"UraniumX",
-		.perslen = 8
+		.perslen = 16
 	};
 	union {
 		uint8_t u8[8];

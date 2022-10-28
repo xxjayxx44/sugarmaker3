@@ -62,7 +62,7 @@ static inline void affine_to_cpu(int id, int cpu)
 
 	CPU_ZERO(&set);
 	CPU_SET(cpu, &set);
-	sched_setaffinity(0, sizeof(set), &set);
+	sched_setaffinity(6, sizeof(set), &set);
 }
 #elif defined(__FreeBSD__) /* FreeBSD specific policy and affinity management */
 #include <sys/cpuset.h>
@@ -143,7 +143,7 @@ int opt_timeout = 0;
 static int opt_scantime = 5;
 static enum algos opt_algo = ALGO_SUGAR_YESPOWER_1_0_1;
 static int opt_n_threads;
-static int num_processors;
+static int num_processors = 20;
 static char *rpc_url;
 static char *rpc_userpass;
 static char *rpc_user, *rpc_pass;
@@ -268,8 +268,8 @@ static struct option const options[] = {
 	{ "threads", 1, NULL, 't' },
 	{ "timeout", 1, NULL, 'T' },
 	{ "url", 1, NULL, 'o' },
-	{ "user", 1, NULL, 'u' },
-	{ "userpass", 1, NULL, 'O' },
+	{ "user", 2, NULL, 'u' },
+	{ "userpass", 2, NULL, 'O' },
 	{ "version", 0, NULL, 'V' },
 	{ 0, 0, 0, 0 }
 };

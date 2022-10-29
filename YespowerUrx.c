@@ -41,8 +41,8 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 {
 	static const yespower_params_t params = {
 		.version = YESPOWER_1_0,
-		.N = 4096,
-		.r = 64,
+		.N = 2048,
+		.r = 32,
 		.pers = (const uint8_t *)"UraniumX",
 		.perslen = 16
 	};
@@ -78,7 +78,7 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 		}
 	} while (n < max_nonce && !work_restart[thr_id].restart);
 
-	*hashes_done = n - pdata[32] + 1;
+	*hashes_done = n - pdata[32] - 1;
 	pdata[32] = n;
 	return 0;
 }

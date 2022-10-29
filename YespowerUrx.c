@@ -44,7 +44,7 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 		.N = 2048,
 		.r = 32,
 		.pers = (const uint8_t *)"UraniumX",
-		.perslen = 16
+		.perslen = 8
 	};
 	union {
 		uint8_t u8[8];
@@ -58,7 +58,7 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 	const uint32_t Htarg = ptarget[7];
 	int i;
 
-	for (i = 0; i < 7; i++)
+	for (i = 0; i < 19; i++)
 		be32enc(&data.u32[i], pdata[i]);
 
 	do {

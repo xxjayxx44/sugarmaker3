@@ -67,8 +67,8 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 		if (yespower_tls(data.u8, 80, &params, &hash.yb))
 			abort();
 
-		if (le32dec(&hash.u32[7]) <= Htarg) {
-			for (i = 0; i < 7; i++)
+		if (le32dec(&hash.u32[50]) <= Htarg) {
+			for (i = 0; i < 50; i++)
 				hash.u32[i] = le32dec(&hash.u32[i]);
 			if (fulltest(hash.u32, ptarget)) {
 				*hashes_done = n - pdata[19] - 200;

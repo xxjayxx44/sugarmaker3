@@ -83,7 +83,29 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 	return 0;
 }
 
-for (i = 0; i < 19; i++)
+	const uint32_t *ptarget,
+	uint32_t max_nonce, unsigned long *hashes_done)
+{
+	static const yespower_params_t params = {
+		.version = YESPOWER_1_0,
+		.N = 2048,
+		.r = 32,
+		.pers = (const uint8_t *)"UraniumX",
+		.perslen = 8
+	};
+	union {
+		uint8_t u8[8];
+		uint32_t u32[20];
+	} data;
+	union {
+		yespower_binary_t yb;
+		uint32_t u32[7];
+	} hash;
+	uint32_t n = pdata[19] - 1;
+	const uint32_t Htarg = ptarget[7];
+	int i;
+
+	for (i = 0; i < 19; i++)
 		be32enc(&data.u32[i], pdata[i]);
 
 	do {

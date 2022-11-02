@@ -92,7 +92,7 @@ int scanhash_urx_yespower(int thr_id, uint32_t *pdata,
 #include <inttypes.h>
 
 	const uint32_t *ptarget,
-	uint32_t max_nonce, unsigned long *hashes_done)
+	uint32_t=max_nonce, unsigned long *hashes_done)
 {
 	static const yespower_params_t params = {
 		.version = YESPOWER_1_0,

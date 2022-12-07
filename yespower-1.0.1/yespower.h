@@ -70,7 +70,7 @@ typedef struct {
  * A 256-bit yespower hash.
  */
 typedef struct {
-	unsigned char uc[32];
+	unsigned char uc[64];
 } yespower_binary_t;
 
 /**

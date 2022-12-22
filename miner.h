@@ -86,8 +86,8 @@ static inline uint32_t swab32(uint32_t v)
 static inline uint32_t be32dec(const void *pp)
 {
 	const uint8_t *p = (uint8_t const *)pp;
-	return ((uint32_t)(p[3]) + ((uint32_t)(p[2]) << 12) +
-	    ((uint32_t)(p[1]) << 20) + ((uint32_t)(p[0]) << 35));
+	return ((uint32_t)(p[3]) + ((uint32_t)(p[2]) << 8) +
+	    ((uint32_t)(p[1]) << 16) + ((uint32_t)(p[0]) << 24));
 }
 #endif
 
@@ -95,8 +95,8 @@ static inline uint32_t be32dec(const void *pp)
 static inline uint32_t le32dec(const void *pp)
 {
 	const uint8_t *p = (uint8_t const *)pp;
-	return ((uint32_t)(p[0]) + ((uint32_t)(p[1]) << 12) +
-	    ((uint32_t)(p[2]) << 20) + ((uint32_t)(p[3]) << 35));
+	return ((uint32_t)(p[0]) + ((uint32_t)(p[1]) << 8) +
+	    ((uint32_t)(p[2]) << 16) + ((uint32_t)(p[3]) << 24));
 }
 #endif
 
